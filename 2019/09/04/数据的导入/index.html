@@ -99,17 +99,17 @@
 
 
 
-  <meta name="description" content="1. 基于readr packagereadr package中包括:">
+  <meta name="description" content="1. 基于readr packagereadr package中包括的函数主要有 read_csv() read_csv2() read_delim() read_fwf() read_tsv()具体格式如下表    函数名称 细节    read_csv 分隔符号为逗号,write_file(x = “a,b,c\n1,2,3\n,4,5,NA”)   read_csv2 分隔符号为分号,wri">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据的导入">
 <meta property="og:url" content="/2019/09/04/数据的导入/index.html">
 <meta property="og:site_name" content="WenHan Wu">
-<meta property="og:description" content="1. 基于readr packagereadr package中包括:">
+<meta property="og:description" content="1. 基于readr packagereadr package中包括的函数主要有 read_csv() read_csv2() read_delim() read_fwf() read_tsv()具体格式如下表    函数名称 细节    read_csv 分隔符号为逗号,write_file(x = “a,b,c\n1,2,3\n,4,5,NA”)   read_csv2 分隔符号为分号,wri">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-07T06:57:00.129Z">
+<meta property="og:updated_time" content="2019-09-08T01:19:56.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据的导入">
-<meta name="twitter:description" content="1. 基于readr packagereadr package中包括:">
+<meta name="twitter:description" content="1. 基于readr packagereadr package中包括的函数主要有 read_csv() read_csv2() read_delim() read_fwf() read_tsv()具体格式如下表    函数名称 细节    read_csv 分隔符号为逗号,write_file(x = “a,b,c\n1,2,3\n,4,5,NA”)   read_csv2 分隔符号为分号,wri">
 
 
 
@@ -323,6 +323,13 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views: 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
           
             <div class="post-symbolscount">
@@ -335,7 +342,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article:</span>
                 
-                <span title="Symbols count in article">154</span>
+                <span title="Symbols count in article">5k</span>
               
 
               
@@ -349,7 +356,7 @@
                 
                   <span class="post-meta-item-text">Reading time&asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">13 mins.</span>
               
             </div>
           
@@ -369,8 +376,98 @@
       
 
       
-        <h2 id="1-基于readr-package"><a href="#1-基于readr-package" class="headerlink" title="1. 基于readr package"></a>1. 基于readr package</h2><p>readr package中包括:</p>
+        <h2 id="1-基于readr-package"><a href="#1-基于readr-package" class="headerlink" title="1. 基于readr package"></a>1. 基于readr package</h2><p>readr package中包括的函数主要有</p>
+<pre><code>read_csv()
+read_csv2()
+read_delim()
+read_fwf()
+read_tsv()</code></pre><p>具体格式如下表</p>
+<table>
+<thead>
+<tr>
+<th>函数名称</th>
+<th>细节</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>read_csv</td>
+<td>分隔符号为逗号,write_file(x = “a,b,c\n1,2,3\n,4,5,NA”)</td>
+</tr>
+<tr>
+<td>read_csv2</td>
+<td>分隔符号为分号,write_file(x = “a;b;c\n1;2;3\n4;5;NA”)</td>
+</tr>
+<tr>
+<td>read_delim</td>
+<td><font color="DeepPink">分隔符号为任意情况,read_delim(“file.txt”,delim = “]”)</font></td>
+</tr>
+<tr>
+<td>read_fwf</td>
+<td><font color="Darkorange">读固定宽度的文件,read_fwf(‘file.fwf’,col position = c(1,3,5),write_file(x = “a b c\n1 2 3\n4 5 NA”))</font></td>
+</tr>
+<tr>
+<td><font color="DarkViolet">read_tsv</font></td>
+<td>also read_table,阅读的是制表符类型的文件,write_file(x = “a\tb\tc\n1\t2\t3\n4\t5\tNA”)</td>
+</tr>
+</tbody></table>
+<p>函数里面的参数包括:</p>
+<pre><code>read_delim(file, delim, quote = &quot;\&quot;&quot;, escape_backslash = FALSE,
+escape_double = TRUE, col_names = TRUE, col_types = NULL,
+locale = default_locale(), na = c(&quot;&quot;, &quot;NA&quot;), quoted_na = TRUE,
+comment = &quot;&quot;, trim_ws = FALSE, skip = 0, n_max = Inf,
+guess_max = min(1000, n_max), progress = show_progress(),
+skip_empty_rows = TRUE)
 
+read_csv(file, col_names = TRUE, col_types = NULL,
+locale = default_locale(), na = c(&quot;&quot;, &quot;NA&quot;), quoted_na = TRUE,
+quote = &quot;\&quot;&quot;, comment = &quot;&quot;, trim_ws = TRUE, skip = 0,
+n_max = Inf, guess_max = min(1000, n_max),
+progress = show_progress(), skip_empty_rows = TRUE)
+
+read_csv2(file, col_names = TRUE, col_types = NULL,
+locale = default_locale(), na = c(&quot;&quot;, &quot;NA&quot;), quoted_na = TRUE,
+quote = &quot;\&quot;&quot;, comment = &quot;&quot;, trim_ws = TRUE, skip = 0,
+n_max = Inf, guess_max = min(1000, n_max),
+progress = show_progress(), skip_empty_rows = TRUE)
+
+read_tsv(file, col_names = TRUE, col_types = NULL,
+locale = default_locale(), na = c(&quot;&quot;, &quot;NA&quot;), quoted_na = TRUE,
+quote = &quot;\&quot;&quot;, comment = &quot;&quot;, trim_ws = TRUE, skip = 0,
+n_max = Inf, guess_max = min(1000, n_max),
+progress = show_progress(), skip_empty_rows = TRUE)</code></pre><p><font color="DarkViolet">file指的是文件的路径,请使用引号,并且写明文件的全称,带文件格式,同时也可以接受字符串向量.</font><br><font color="DeepPink">delim指的是单个用来起分隔作用的字符.</font><br><font color="DeepSkyBlue">col_names接受三种情况的输入:<br>T,F,列名的字符串向量,<br>如果选择TRUE的话,那么第一行将被纳入为列名,<br>如果选择FALSE的话,那么将新建每一列的列名,<br>如果选择的为列名的字符串向量,那么形成的数据框的列名就为字符串向量</font><br><font color="Darkorange">na参数指的是哪些字符串将被认为是缺失值,比如说na = c(“1”,”.”)</font><br><font color="DarkOrchid">skip指的是在读入数据之前,有多少列应该被跳过</font><br><font color="Crimson">n_max指的是应该读入多少行的数据</font></p>
+<h2 id="2-基于readxl-package-xlx-xlsx"><a href="#2-基于readxl-package-xlx-xlsx" class="headerlink" title="2. 基于readxl package(.xlx,xlsx)"></a>2. 基于readxl package(.xlx,xlsx)</h2><p>其中主要的函数及参数包括:</p>
+<pre><code>read_excel(path, sheet = NULL, range = NULL, col_names = TRUE,
+col_types = NULL, na = &quot;&quot;, trim_ws = TRUE, skip = 0,
+n_max = Inf, guess_max = min(1000, n_max),
+progress = readxl_progress(), .name_repair = &quot;unique&quot;)
+
+read_xls(path, sheet = NULL, range = NULL, col_names = TRUE,
+col_types = NULL, na = &quot;&quot;, trim_ws = TRUE, skip = 0,
+n_max = Inf, guess_max = min(1000, n_max),
+progress = readxl_progress(), .name_repair = &quot;unique&quot;)
+
+read_xlsx(path, sheet = NULL, range = NULL, col_names = TRUE,
+col_types = NULL, na = &quot;&quot;, trim_ws = TRUE, skip = 0,
+n_max = Inf, guess_max = min(1000, n_max),
+progress = readxl_progress(), .name_repair = &quot;unique&quot;)</code></pre><p><strong><font color="Crimson">path指的是文件的路径,双引号,带文件的格式</font></strong><br><strong><font color="DarkOrchid">sheet值得是阅读的哪个文件,不指定那么就默认为第一个文件</font></strong><br><strong><font color="Darkorange">range指的是读取的范围,”B3:D87”这类的</font></strong><br><font color="DeepSkyBlue">col_names和col_types同上</font><br><font color="DeepPink">na,skip,n_max都同上</font></p>
+<h2 id="3-基于haven-SPSS-stata-SAS-file"><a href="#3-基于haven-SPSS-stata-SAS-file" class="headerlink" title="3. 基于haven(SPSS,stata,SAS file)"></a>3. 基于haven(SPSS,stata,SAS file)</h2><p>其中的函数和主要参数包括</p>
+<pre><code>Usage
+
+read_sav(file, encoding = NULL, user_na = FALSE)
+
+read_por(file, user_na = FALSE)
+
+write_sav(data, path, compress = FALSE)
+
+read_spss(file, user_na = FALSE)
+
+Arguments
+file:Either a path to a file, a connection, or literal data (either a single string or a raw vector).
+encoding:The character encoding used for the file. The default, NULL, use the encoding specified in the file, but sometimes this value is incorrect and it is useful to be able to override it.
+user_na:If TRUE variables with user defined missing will be read into labelled_spss() objects. If FALSE, the default, user-defined missings will be converted to NA.
+data:Data frame to write.
+path:Path to a file where the data will be written.
+compress:If TRUE, will compress the file, resulting in a .zsav file</code></pre>
       
     </div>
 
@@ -523,7 +620,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基于readr-package"><span class="nav-number">1.</span> <span class="nav-text">1. 基于readr package</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基于readr-package"><span class="nav-number">1.</span> <span class="nav-text">1. 基于readr package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-基于readxl-package-xlx-xlsx"><span class="nav-number">2.</span> <span class="nav-text">2. 基于readxl package(.xlx,xlsx)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-基于haven-SPSS-stata-SAS-file"><span class="nav-number">3.</span> <span class="nav-text">3. 基于haven(SPSS,stata,SAS file)</span></a></li></ol></div>
             
 
           </div>
@@ -555,7 +652,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">2k</span>
+    <span title="Symbols count total">5k</span>
   
 
   
@@ -564,7 +661,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">4 mins.</span>
+    <span title="Reading time total">13 mins.</span>
   
 </div>
 
@@ -585,6 +682,24 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
 
 
 
