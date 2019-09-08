@@ -99,17 +99,17 @@
 
 
 
-  <meta name="description" content="1. 基于readr packagereadr package中包括的函数主要有 read_csv() read_csv2() read_delim() read_fwf() read_tsv()具体格式如下表    函数名称 细节    read_csv 分隔符号为逗号,write_file(x = “a,b,c\n1,2,3\n,4,5,NA”)   read_csv2 分隔符号为分号,wri">
+  <meta name="description" content="The article has been encrypted, please enter your password to view.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据的导入">
 <meta property="og:url" content="/2019/09/04/数据的导入/index.html">
 <meta property="og:site_name" content="WenHan Wu">
-<meta property="og:description" content="1. 基于readr packagereadr package中包括的函数主要有 read_csv() read_csv2() read_delim() read_fwf() read_tsv()具体格式如下表    函数名称 细节    read_csv 分隔符号为逗号,write_file(x = “a,b,c\n1,2,3\n,4,5,NA”)   read_csv2 分隔符号为分号,wri">
+<meta property="og:description" content="The article has been encrypted, please enter your password to view.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-08T01:19:56.080Z">
+<meta property="og:updated_time" content="2019-09-08T01:56:42.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据的导入">
-<meta name="twitter:description" content="1. 基于readr packagereadr package中包括的函数主要有 read_csv() read_csv2() read_delim() read_fwf() read_tsv()具体格式如下表    函数名称 细节    read_csv 分隔符号为逗号,write_file(x = “a,b,c\n1,2,3\n,4,5,NA”)   read_csv2 分隔符号为分号,wri">
+<meta name="twitter:description" content="The article has been encrypted, please enter your password to view.">
 
 
 
@@ -342,7 +342,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article:</span>
                 
-                <span title="Symbols count in article">5k</span>
+                <span title="Symbols count in article">14k</span>
               
 
               
@@ -356,7 +356,7 @@
                 
                   <span class="post-meta-item-text">Reading time&asymp;</span>
                 
-                <span title="Reading time">13 mins.</span>
+                <span title="Reading time">34 mins.</span>
               
             </div>
           
@@ -376,98 +376,19 @@
       
 
       
-        <h2 id="1-基于readr-package"><a href="#1-基于readr-package" class="headerlink" title="1. 基于readr package"></a>1. 基于readr package</h2><p>readr package中包括的函数主要有</p>
-<pre><code>read_csv()
-read_csv2()
-read_delim()
-read_fwf()
-read_tsv()</code></pre><p>具体格式如下表</p>
-<table>
-<thead>
-<tr>
-<th>函数名称</th>
-<th>细节</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>read_csv</td>
-<td>分隔符号为逗号,write_file(x = “a,b,c\n1,2,3\n,4,5,NA”)</td>
-</tr>
-<tr>
-<td>read_csv2</td>
-<td>分隔符号为分号,write_file(x = “a;b;c\n1;2;3\n4;5;NA”)</td>
-</tr>
-<tr>
-<td>read_delim</td>
-<td><font color="DeepPink">分隔符号为任意情况,read_delim(“file.txt”,delim = “]”)</font></td>
-</tr>
-<tr>
-<td>read_fwf</td>
-<td><font color="Darkorange">读固定宽度的文件,read_fwf(‘file.fwf’,col position = c(1,3,5),write_file(x = “a b c\n1 2 3\n4 5 NA”))</font></td>
-</tr>
-<tr>
-<td><font color="DarkViolet">read_tsv</font></td>
-<td>also read_table,阅读的是制表符类型的文件,write_file(x = “a\tb\tc\n1\t2\t3\n4\t5\tNA”)</td>
-</tr>
-</tbody></table>
-<p>函数里面的参数包括:</p>
-<pre><code>read_delim(file, delim, quote = &quot;\&quot;&quot;, escape_backslash = FALSE,
-escape_double = TRUE, col_names = TRUE, col_types = NULL,
-locale = default_locale(), na = c(&quot;&quot;, &quot;NA&quot;), quoted_na = TRUE,
-comment = &quot;&quot;, trim_ws = FALSE, skip = 0, n_max = Inf,
-guess_max = min(1000, n_max), progress = show_progress(),
-skip_empty_rows = TRUE)
-
-read_csv(file, col_names = TRUE, col_types = NULL,
-locale = default_locale(), na = c(&quot;&quot;, &quot;NA&quot;), quoted_na = TRUE,
-quote = &quot;\&quot;&quot;, comment = &quot;&quot;, trim_ws = TRUE, skip = 0,
-n_max = Inf, guess_max = min(1000, n_max),
-progress = show_progress(), skip_empty_rows = TRUE)
-
-read_csv2(file, col_names = TRUE, col_types = NULL,
-locale = default_locale(), na = c(&quot;&quot;, &quot;NA&quot;), quoted_na = TRUE,
-quote = &quot;\&quot;&quot;, comment = &quot;&quot;, trim_ws = TRUE, skip = 0,
-n_max = Inf, guess_max = min(1000, n_max),
-progress = show_progress(), skip_empty_rows = TRUE)
-
-read_tsv(file, col_names = TRUE, col_types = NULL,
-locale = default_locale(), na = c(&quot;&quot;, &quot;NA&quot;), quoted_na = TRUE,
-quote = &quot;\&quot;&quot;, comment = &quot;&quot;, trim_ws = TRUE, skip = 0,
-n_max = Inf, guess_max = min(1000, n_max),
-progress = show_progress(), skip_empty_rows = TRUE)</code></pre><p><font color="DarkViolet">file指的是文件的路径,请使用引号,并且写明文件的全称,带文件格式,同时也可以接受字符串向量.</font><br><font color="DeepPink">delim指的是单个用来起分隔作用的字符.</font><br><font color="DeepSkyBlue">col_names接受三种情况的输入:<br>T,F,列名的字符串向量,<br>如果选择TRUE的话,那么第一行将被纳入为列名,<br>如果选择FALSE的话,那么将新建每一列的列名,<br>如果选择的为列名的字符串向量,那么形成的数据框的列名就为字符串向量</font><br><font color="Darkorange">na参数指的是哪些字符串将被认为是缺失值,比如说na = c(“1”,”.”)</font><br><font color="DarkOrchid">skip指的是在读入数据之前,有多少列应该被跳过</font><br><font color="Crimson">n_max指的是应该读入多少行的数据</font></p>
-<h2 id="2-基于readxl-package-xlx-xlsx"><a href="#2-基于readxl-package-xlx-xlsx" class="headerlink" title="2. 基于readxl package(.xlx,xlsx)"></a>2. 基于readxl package(.xlx,xlsx)</h2><p>其中主要的函数及参数包括:</p>
-<pre><code>read_excel(path, sheet = NULL, range = NULL, col_names = TRUE,
-col_types = NULL, na = &quot;&quot;, trim_ws = TRUE, skip = 0,
-n_max = Inf, guess_max = min(1000, n_max),
-progress = readxl_progress(), .name_repair = &quot;unique&quot;)
-
-read_xls(path, sheet = NULL, range = NULL, col_names = TRUE,
-col_types = NULL, na = &quot;&quot;, trim_ws = TRUE, skip = 0,
-n_max = Inf, guess_max = min(1000, n_max),
-progress = readxl_progress(), .name_repair = &quot;unique&quot;)
-
-read_xlsx(path, sheet = NULL, range = NULL, col_names = TRUE,
-col_types = NULL, na = &quot;&quot;, trim_ws = TRUE, skip = 0,
-n_max = Inf, guess_max = min(1000, n_max),
-progress = readxl_progress(), .name_repair = &quot;unique&quot;)</code></pre><p><strong><font color="Crimson">path指的是文件的路径,双引号,带文件的格式</font></strong><br><strong><font color="DarkOrchid">sheet值得是阅读的哪个文件,不指定那么就默认为第一个文件</font></strong><br><strong><font color="Darkorange">range指的是读取的范围,”B3:D87”这类的</font></strong><br><font color="DeepSkyBlue">col_names和col_types同上</font><br><font color="DeepPink">na,skip,n_max都同上</font></p>
-<h2 id="3-基于haven-SPSS-stata-SAS-file"><a href="#3-基于haven-SPSS-stata-SAS-file" class="headerlink" title="3. 基于haven(SPSS,stata,SAS file)"></a>3. 基于haven(SPSS,stata,SAS file)</h2><p>其中的函数和主要参数包括</p>
-<pre><code>Usage
-
-read_sav(file, encoding = NULL, user_na = FALSE)
-
-read_por(file, user_na = FALSE)
-
-write_sav(data, path, compress = FALSE)
-
-read_spss(file, user_na = FALSE)
-
-Arguments
-file:Either a path to a file, a connection, or literal data (either a single string or a raw vector).
-encoding:The character encoding used for the file. The default, NULL, use the encoding specified in the file, but sometimes this value is incorrect and it is useful to be able to override it.
-user_na:If TRUE variables with user defined missing will be read into labelled_spss() objects. If FALSE, the default, user-defined missings will be converted to NA.
-data:Data frame to write.
-path:Path to a file where the data will be written.
-compress:If TRUE, will compress the file, resulting in a .zsav file</code></pre>
+        <div id="hbe-security">
+  <div class="hbe-input-container">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="🎂">
+    <label for="pass">🎂</label>
+    <div class="bottom-line"></div>
+  </div>
+</div>
+<div id="decryptionError" style="display: none;">Incorrect Password!</div>
+<div id="noContentError" style="display: none;">No content to display!</div>
+<div id="encrypt-blog" style="display:none">
+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
+</div>
+<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
     </div>
 
@@ -555,17 +476,8 @@ compress:If TRUE, will compress the file, resulting in a .zsav file</code></pre>
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -610,22 +522,6 @@ compress:If TRUE, will compress the file, resulting in a .zsav file</code></pre>
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基于readr-package"><span class="nav-number">1.</span> <span class="nav-text">1. 基于readr package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-基于readxl-package-xlx-xlsx"><span class="nav-number">2.</span> <span class="nav-text">2. 基于readxl package(.xlx,xlsx)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-基于haven-SPSS-stata-SAS-file"><span class="nav-number">3.</span> <span class="nav-text">3. 基于haven(SPSS,stata,SAS file)</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
