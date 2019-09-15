@@ -99,24 +99,24 @@
 
 
 
-  <meta name="description" content="The article has been encrypted, please enter your password to view.">
+  <meta name="description" content="1. 什么是Reads?高通量测序平台产生的序列就称为read。 2. 什么是Contig？拼接软件基于reads之间的overlap区，拼接获得的序列称为Contig（重叠群）。 3. 什么是Scaffold？基因组de novo测序，通过reads拼接获得Contigs后，往往还需要构建454 Paired-end库或Illumina Mate-pair库，以获得一定大小片段（如3Kb、6Kb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据的预处理">
-<meta property="og:url" content="/2019/09/08/数据的预处理/index.html">
+<meta property="og:title" content="转录组测序">
+<meta property="og:url" content="/2019/09/15/转录组测序/index.html">
 <meta property="og:site_name" content="WenHan Wu">
-<meta property="og:description" content="The article has been encrypted, please enter your password to view.">
+<meta property="og:description" content="1. 什么是Reads?高通量测序平台产生的序列就称为read。 2. 什么是Contig？拼接软件基于reads之间的overlap区，拼接获得的序列称为Contig（重叠群）。 3. 什么是Scaffold？基因组de novo测序，通过reads拼接获得Contigs后，往往还需要构建454 Paired-end库或Illumina Mate-pair库，以获得一定大小片段（如3Kb、6Kb">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-08T10:08:46.168Z">
+<meta property="og:updated_time" content="2019-09-15T09:00:09.957Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据的预处理">
-<meta name="twitter:description" content="The article has been encrypted, please enter your password to view.">
+<meta name="twitter:title" content="转录组测序">
+<meta name="twitter:description" content="1. 什么是Reads?高通量测序平台产生的序列就称为read。 2. 什么是Contig？拼接软件基于reads之间的overlap区，拼接获得的序列称为Contig（重叠群）。 3. 什么是Scaffold？基因组de novo测序，通过reads拼接获得Contigs后，往往还需要构建454 Paired-end库或Illumina Mate-pair库，以获得一定大小片段（如3Kb、6Kb">
 
 
 
 
 
 
-  <link rel="canonical" href="/2019/09/08/数据的预处理/">
+  <link rel="canonical" href="/2019/09/15/转录组测序/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>数据的预处理 | WenHan Wu</title>
+  <title>转录组测序 | WenHan Wu</title>
   
 
 
@@ -276,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/09/08/数据的预处理/">
+    <link itemprop="mainEntityOfPage" href="/2019/09/15/转录组测序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wenhan wu">
@@ -293,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据的预处理</h1>
+          <h1 class="post-title" itemprop="name headline">转录组测序</h1>
         
 
         <div class="post-meta">
@@ -305,7 +305,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-08T10:30:07+08:00">2019-09-08</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-15T15:42:09+08:00">2019-09-15</time>
             
 
             
@@ -343,7 +343,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article:</span>
                 
-                <span title="Symbols count in article">3.5k</span>
+                <span title="Symbols count in article">2.4k</span>
               
 
               
@@ -357,7 +357,7 @@
                 
                   <span class="post-meta-item-text">Reading time&asymp;</span>
                 
-                <span title="Reading time">9 mins.</span>
+                <span title="Reading time">6 mins.</span>
               
             </div>
           
@@ -377,19 +377,24 @@
       
 
       
-        <div id="hbe-security">
-  <div class="hbe-input-container">
-  <input type="password" class="hbe-form-control" id="pass" placeholder="🐰🎂">
-    <label for="pass">🐰🎂</label>
-    <div class="bottom-line"></div>
-  </div>
-</div>
-<div id="decryptionError" style="display: none;">Incorrect Password!</div>
-<div id="noContentError" style="display: none;">No content to display!</div>
-<div id="encrypt-blog" style="display:none">
-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
-</div>
-<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+        <h2 id="1-什么是Reads"><a href="#1-什么是Reads" class="headerlink" title="1. 什么是Reads?"></a>1. 什么是Reads?</h2><p>高通量测序平台产生的序列就称为read。</p>
+<h2 id="2-什么是Contig？"><a href="#2-什么是Contig？" class="headerlink" title="2. 什么是Contig？"></a>2. 什么是Contig？</h2><p>拼接软件基于reads之间的overlap区，拼接获得的序列称为Contig（重叠群）。</p>
+<h2 id="3-什么是Scaffold？"><a href="#3-什么是Scaffold？" class="headerlink" title="3. 什么是Scaffold？"></a>3. 什么是Scaffold？</h2><p>基因组de novo测序，通过reads拼接获得Contigs后，往往还需要构建454 Paired-end库或Illumina Mate-pair库，以获得一定大小片段（如3Kb、6Kb、10Kb、20Kb）两端的序列。基于这些序列，可以确定一些Contig之间的顺序关系，这些先后顺序已知的Contigs组成Scaffold。</p>
+<h2 id="4-Contig-N50："><a href="#4-Contig-N50：" class="headerlink" title="4. Contig N50："></a>4. Contig N50：</h2><p>Reads拼接后会获得一些不同长度的Contigs.将所有的Contig长度相加,能获得一个Contig总长度.然后将所有的Contigs按照从长到短进行排序,如获得Contig 1,Contig 2,contig 3…………Contig 25.将Contig按照这个顺序依次相加,当相加的长度达到Contig总长度的一半时,最后一个加上的Contig长度即为Contig N50.举例：Contig 1+Contig 2+ Contig 3 +Contig 4=Contig总长度*1/2时,Contig 4的长度即为Contig N50.ContigN50可以作为基因组拼接的结果好坏的一个判断标准.</p>
+<h2 id="5-Scaffold-N50："><a href="#5-Scaffold-N50：" class="headerlink" title="5.Scaffold N50："></a>5.Scaffold N50：</h2><p>Scaffold N50与Contig N50的定义类似.Contigs拼接组装获得一些不同长度的Scaffolds.将所有的Scaffold长度相加,能获得一个Scaffold总长度.然后将所有的Scaffolds<br>按照从长到短进行排序,如获得Scaffold 1,Scaffold 2,Scaffold 3…………Scaffold 25.将Scaffold按照这个顺序依次相加,当相加的长度达到Scaffold总长度的一半时,最后一个加上的Scaffold长度即为Scaffold N50.</p>
+<h2 id="trinity"><a href="#trinity" class="headerlink" title="trinity"></a>trinity</h2><p>基于RNA-seq组装的工具，</p>
+<h3 id="inchworm："><a href="#inchworm：" class="headerlink" title="inchworm："></a>inchworm：</h3><p>将RNA-seq数据组装成单个转录本，通常是主要转录亚型的全长转录本.</p>
+<h3 id="Chrysalis："><a href="#Chrysalis：" class="headerlink" title="Chrysalis："></a>Chrysalis：</h3><p>这一步将上一步得到contig进行聚类，对于每个聚类构建完整的德布罗意图(de Bruijin graph)。每个转录本表示的是给定基因或者一组有着共同序列的基因的全部转录组成。 之后会根据图中不相交的点对全部短读数据进行拆分.</p>
+<h3 id="Butterfly"><a href="#Butterfly" class="headerlink" title="Butterfly:"></a>Butterfly:</h3><p>并行处理各个图(graph), 追踪每个图中的短读和配对短读的路径，最后报告可变剪切亚型的全长转录本，并且区分出旁系同源基因的转录本.</p>
+<pre><code>conda create -n Trinity trinity -y
+source activate Trinity
+Trinity --seqType fq --max_memory 50G  \
+     --left condA_1.fq.gz,condB_1.fq.gz,condC_1.fq.gz \
+     --right condA_2.fq.gz,condB_2.fq.gz,condC_2.fq.gz \
+     --CPU 6  
+# 有基因组引导组装
+Trinity --genome_guided_bam rnaseq_alignments.csorted.bam --max_memory 50G \
+            --genome_guided_max_intron 10000 --CPU 6</code></pre>
       
     </div>
 
@@ -416,8 +421,8 @@ U2FsdGVkX186+mcv0oL8uFyxPR/13mU8AXjwBw0bJ2pZQbdf+NThOxCS2/EpZsyOJAnJNqxp1PfxHfVy
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/04/markdown初步语法/" rel="next" title="markdown 语法">
-                <i class="fa fa-chevron-left"></i> markdown 语法
+              <a href="/2019/09/08/数据的预处理/" rel="next" title="数据的预处理">
+                <i class="fa fa-chevron-left"></i> 数据的预处理
               </a>
             
           </div>
@@ -425,10 +430,6 @@ U2FsdGVkX186+mcv0oL8uFyxPR/13mU8AXjwBw0bJ2pZQbdf+NThOxCS2/EpZsyOJAnJNqxp1PfxHfVy
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/15/转录组测序/" rel="prev" title="转录组测序">
-                转录组测序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -477,8 +478,17 @@ U2FsdGVkX186+mcv0oL8uFyxPR/13mU8AXjwBw0bJ2pZQbdf+NThOxCS2/EpZsyOJAnJNqxp1PfxHfVy
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -523,6 +533,22 @@ U2FsdGVkX186+mcv0oL8uFyxPR/13mU8AXjwBw0bJ2pZQbdf+NThOxCS2/EpZsyOJAnJNqxp1PfxHfVy
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是Reads"><span class="nav-number">1.</span> <span class="nav-text">1. 什么是Reads?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-什么是Contig？"><span class="nav-number">2.</span> <span class="nav-text">2. 什么是Contig？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-什么是Scaffold？"><span class="nav-number">3.</span> <span class="nav-text">3. 什么是Scaffold？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Contig-N50："><span class="nav-number">4.</span> <span class="nav-text">4. Contig N50：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Scaffold-N50："><span class="nav-number">5.</span> <span class="nav-text">5.Scaffold N50：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trinity"><span class="nav-number">6.</span> <span class="nav-text">trinity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inchworm："><span class="nav-number">6.1.</span> <span class="nav-text">inchworm：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chrysalis："><span class="nav-number">6.2.</span> <span class="nav-text">Chrysalis：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Butterfly"><span class="nav-number">6.3.</span> <span class="nav-text">Butterfly:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
