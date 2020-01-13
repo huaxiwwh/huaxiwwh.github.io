@@ -2,63 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>/articles/data%20clean.html</loc>
+    <loc>www.wuwenhan.tech/articles/RNA_seq.html</loc>
+    
+    <lastmod>2020-01-13T18:31:28.763Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>www.wuwenhan.tech/articles/data%20clean.html</loc>
     
     <lastmod>2020-01-13T18:30:36.004Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/articles/RNA%20seq.html</loc>
-    
-    <lastmod>2020-01-13T18:30:23.657Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>/articles/de_bruijn%20graph.html</loc>
+    <loc>www.wuwenhan.tech/articles/de_bruijn%20graph.html</loc>
     
     <lastmod>2020-01-13T18:29:56.674Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/articles/markdown%20rules.html</loc>
+    <loc>www.wuwenhan.tech/articles/markdown%20rules.html</loc>
     
     <lastmod>2020-01-13T18:29:48.647Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/articles/R%20common%20function.html</loc>
+    <loc>www.wuwenhan.tech/articles/R%20common%20function.html</loc>
     
     <lastmod>2020-01-13T18:29:19.839Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/articles/data%20import.html</loc>
+    <loc>www.wuwenhan.tech/articles/data%20import.html</loc>
     
     <lastmod>2020-01-13T18:29:01.545Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/articles/trinity.html</loc>
+    <loc>www.wuwenhan.tech/articles/trinity.html</loc>
     
     <lastmod>2019-10-15T14:27:04.139Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/articles/test.html</loc>
+    <loc>www.wuwenhan.tech/articles/test.html</loc>
     
     <lastmod>2019-09-04T09:57:24.203Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/articles/hello-world.html</loc>
+    <loc>www.wuwenhan.tech/articles/hello-world.html</loc>
     
     <lastmod>2019-09-03T13:18:06.687Z</lastmod>
     
