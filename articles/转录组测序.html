@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1. 什么是Reads?高通量测序平台产生的序列就称为read。 2. 什么是Contig？拼接软件基于reads之间的overlap区，拼接获得的序列称为Contig（重叠群）。 3. 什么是Scaffold？基因组de novo测序，通过reads拼接获得Contigs后，往往还需要构建454 Paired-end库或Illumina Mate-pair库，以获得一定大小片段（如3Kb、6Kb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="转录组测序">
+<meta property="og:url" content="/articles/转录组测序.html">
+<meta property="og:site_name" content="WenHan Wu">
+<meta property="og:description" content="1. 什么是Reads?高通量测序平台产生的序列就称为read。 2. 什么是Contig？拼接软件基于reads之间的overlap区，拼接获得的序列称为Contig（重叠群）。 3. 什么是Scaffold？基因组de novo测序，通过reads拼接获得Contigs后，往往还需要构建454 Paired-end库或Illumina Mate-pair库，以获得一定大小片段（如3Kb、6Kb">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-15T09:00:09.957Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="转录组测序">
+<meta name="twitter:description" content="1. 什么是Reads?高通量测序平台产生的序列就称为read。 2. 什么是Contig？拼接软件基于reads之间的overlap区，拼接获得的序列称为Contig（重叠群）。 3. 什么是Scaffold？基因组de novo测序，通过reads拼接获得Contigs后，往往还需要构建454 Paired-end库或Illumina Mate-pair库，以获得一定大小片段（如3Kb、6Kb">
+
+
+
+
+
+
+  <link rel="canonical" href="/articles/转录组测序.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>转录组测序 | WenHan Wu</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WenHan Wu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">a general surgeon</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+</li>
+
+      
+
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+  
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script> </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/articles/转录组测序.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wenhan wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WenHan Wu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">转录组测序</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-15T15:42:09+08:00">2019-09-15</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views: 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article:</span>
+                
+                <span title="Symbols count in article">2.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time&asymp;</span>
+                
+                <span title="Reading time">6 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-什么是Reads"><a href="#1-什么是Reads" class="headerlink" title="1. 什么是Reads?"></a>1. 什么是Reads?</h2><p>高通量测序平台产生的序列就称为read。</p>
+<h2 id="2-什么是Contig？"><a href="#2-什么是Contig？" class="headerlink" title="2. 什么是Contig？"></a>2. 什么是Contig？</h2><p>拼接软件基于reads之间的overlap区，拼接获得的序列称为Contig（重叠群）。</p>
+<h2 id="3-什么是Scaffold？"><a href="#3-什么是Scaffold？" class="headerlink" title="3. 什么是Scaffold？"></a>3. 什么是Scaffold？</h2><p>基因组de novo测序，通过reads拼接获得Contigs后，往往还需要构建454 Paired-end库或Illumina Mate-pair库，以获得一定大小片段（如3Kb、6Kb、10Kb、20Kb）两端的序列。基于这些序列，可以确定一些Contig之间的顺序关系，这些先后顺序已知的Contigs组成Scaffold。</p>
+<h2 id="4-Contig-N50："><a href="#4-Contig-N50：" class="headerlink" title="4. Contig N50："></a>4. Contig N50：</h2><p>Reads拼接后会获得一些不同长度的Contigs.将所有的Contig长度相加,能获得一个Contig总长度.然后将所有的Contigs按照从长到短进行排序,如获得Contig 1,Contig 2,contig 3…………Contig 25.将Contig按照这个顺序依次相加,当相加的长度达到Contig总长度的一半时,最后一个加上的Contig长度即为Contig N50.举例：Contig 1+Contig 2+ Contig 3 +Contig 4=Contig总长度*1/2时,Contig 4的长度即为Contig N50.ContigN50可以作为基因组拼接的结果好坏的一个判断标准.</p>
+<h2 id="5-Scaffold-N50："><a href="#5-Scaffold-N50：" class="headerlink" title="5.Scaffold N50："></a>5.Scaffold N50：</h2><p>Scaffold N50与Contig N50的定义类似.Contigs拼接组装获得一些不同长度的Scaffolds.将所有的Scaffold长度相加,能获得一个Scaffold总长度.然后将所有的Scaffolds<br>按照从长到短进行排序,如获得Scaffold 1,Scaffold 2,Scaffold 3…………Scaffold 25.将Scaffold按照这个顺序依次相加,当相加的长度达到Scaffold总长度的一半时,最后一个加上的Scaffold长度即为Scaffold N50.</p>
+<h2 id="trinity"><a href="#trinity" class="headerlink" title="trinity"></a>trinity</h2><p>基于RNA-seq组装的工具，</p>
+<h3 id="inchworm："><a href="#inchworm：" class="headerlink" title="inchworm："></a>inchworm：</h3><p>将RNA-seq数据组装成单个转录本，通常是主要转录亚型的全长转录本.</p>
+<h3 id="Chrysalis："><a href="#Chrysalis：" class="headerlink" title="Chrysalis："></a>Chrysalis：</h3><p>这一步将上一步得到contig进行聚类，对于每个聚类构建完整的德布罗意图(de Bruijin graph)。每个转录本表示的是给定基因或者一组有着共同序列的基因的全部转录组成。 之后会根据图中不相交的点对全部短读数据进行拆分.</p>
+<h3 id="Butterfly"><a href="#Butterfly" class="headerlink" title="Butterfly:"></a>Butterfly:</h3><p>并行处理各个图(graph), 追踪每个图中的短读和配对短读的路径，最后报告可变剪切亚型的全长转录本，并且区分出旁系同源基因的转录本.</p>
+<pre><code>conda create -n Trinity trinity -y
+source activate Trinity
+Trinity --seqType fq --max_memory 50G  \
+     --left condA_1.fq.gz,condB_1.fq.gz,condC_1.fq.gz \
+     --right condA_2.fq.gz,condB_2.fq.gz,condC_2.fq.gz \
+     --CPU 6  
+# 有基因组引导组装
+Trinity --genome_guided_bam rnaseq_alignments.csorted.bam --max_memory 50G \
+            --genome_guided_max_intron 10000 --CPU 6</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/articles/数据的预处理.html" rel="next" title="数据的预处理">
+                <i class="fa fa-chevron-left"></i> 数据的预处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/articles/R语言常用函数.html" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wenhan wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是Reads"><span class="nav-number">1.</span> <span class="nav-text">1. 什么是Reads?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-什么是Contig？"><span class="nav-number">2.</span> <span class="nav-text">2. 什么是Contig？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-什么是Scaffold？"><span class="nav-number">3.</span> <span class="nav-text">3. 什么是Scaffold？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Contig-N50："><span class="nav-number">4.</span> <span class="nav-text">4. Contig N50：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Scaffold-N50："><span class="nav-number">5.</span> <span class="nav-text">5.Scaffold N50：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trinity"><span class="nav-number">6.</span> <span class="nav-text">trinity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inchworm："><span class="nav-number">6.1.</span> <span class="nav-text">inchworm：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chrysalis："><span class="nav-number">6.2.</span> <span class="nav-text">Chrysalis：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Butterfly"><span class="nav-number">6.3.</span> <span class="nav-text">Butterfly:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wenhan wu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">7k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">17 mins.</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.1.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
