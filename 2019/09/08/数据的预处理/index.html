@@ -1,385 +1,63 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="en">
+<html lang="en">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '6.1.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
+  <meta charset="utf-8">
   
-
-
-
-
-  <meta name="description" content="The article has been encrypted, please enter your password to view.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据的预处理">
-<meta property="og:url" content="/2019/09/08/数据的预处理/index.html">
-<meta property="og:site_name" content="WenHan Wu">
-<meta property="og:description" content="The article has been encrypted, please enter your password to view.">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-13T13:49:59.923Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据的预处理">
-<meta name="twitter:description" content="The article has been encrypted, please enter your password to view.">
-
-
-
-
-
-
-  <link rel="canonical" href="/2019/09/08/数据的预处理/">
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>数据的预处理 | WenHan Wu</title>
   
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
-
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    数据的预处理 |
+    
+    WenHan Wu</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
 </head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-数据的预处理" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
-
-  
-  
+  <div class="article-inner">
     
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"> 
-
-<div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">WenHan Wu</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">a general surgeon</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+      <header class="article-header">
         
-        
-          
-  <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
-</li>
-
-      
-        
-        
-          
-  <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
-</li>
-
-      
-
-      
-    </ul>
+  
+    <h1 class="article-title" itemprop="name">
+      数据的预处理
+    </h1>
   
 
-  
-
-  
-</nav>
-
-
-  
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script> </div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-            
-
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/09/08/数据的预处理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wenhan wu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WenHan Wu">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">数据的预处理</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-08T10:30:07+08:00">2019-09-08</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
-            <i class="fa fa-eye"></i>
-             Views: 
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article:</span>
-                
-                <span title="Symbols count in article">3.6k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time&asymp;</span>
-                
-                <span title="Reading time">9 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
       </header>
     
 
     
+      <div class="article-meta">
+        <a href="/2019/09/08/数据的预处理/" class="article-date">
+  <time datetime="2019-09-08T02:30:07.601Z" itemprop="datePublished">2019-09-08</time>
+</a>
+        
+      </div>
     
-    
-    <div class="post-body" itemprop="articleBody">
 
+    <div class="article-entry" itemprop="articleBody">
       
+
       
 
       
         <div id="hbe-security">
   <div class="hbe-input-container">
-  <input type="password" class="hbe-form-control" id="pass" placeholder="🐰🎂">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="🐰🎂" />
     <label for="pass">🐰🎂</label>
     <div class="bottom-line"></div>
   </div>
@@ -387,388 +65,65 @@
 <div id="decryptionError" style="display: none;">Incorrect Password!</div>
 <div id="noContentError" style="display: none;">No content to display!</div>
 <div id="encrypt-blog" style="display:none">
-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
+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
 </div>
 <script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
     </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/09/04/markdown初步语法/" rel="next" title="markdown 语法">
-                <i class="fa fa-chevron-left"></i> markdown 语法
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/15/转录组测序/" rel="prev" title="转录组测序">
-                转录组测序 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+    <footer class="article-footer">
+      <a data-url="/2019/09/08/数据的预处理/" data-id="ck5ckrrug0006947xw2up3dng"
+         class="article-share-link">分享</a>
       
     </footer>
-  </div>
-  
-  
-  
-  </article>
 
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
-
-          </div>
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/09/15/转录组测序/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
           
-
-  
-
-
-
+            转录组测序
+          
         </div>
-        
-          
+      </a>
+    
+    
+      <a href="/2019/09/04/markdown初步语法/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">markdown 语法</div>
+      </a>
+    
+  </nav>
+
+
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
     </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">wenhan wu</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">9</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
 
 
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate"> 
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">wenhan wu</span>
-
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">7k</span>
-  
-
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    
-    <span title="Reading time total">18 mins.</span>
-  
-</div>
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.1.0</div>
-
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv" title="Total Visitors">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-  
-
-  
-    <span class="site-pv" title="Total Views">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-    </span>
-  
-</div>
-
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
+<script src="/js/technology.js"></script>
 
   </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
-
-
-
-  
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
 </body>
 </html>
-<!-- 页面点击小红心 -->
-<script type="text/javascript" src="/js/src/clicklove.js"></script>
