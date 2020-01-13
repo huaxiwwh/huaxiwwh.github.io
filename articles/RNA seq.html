@@ -99,24 +99,24 @@
 
 
 
-  <meta name="description" content="trinity RNA-seq目的：不利用参考基因组，重建全长转录组。这项工作面临的挑战： 转录本表达量的差异性：即不同转录本之间的表达有高有低。 测序的偏倚：读段可能并未覆盖某些转录本的全长。 如何平衡不同转录本之间因为表达量的差异而引入的测序误差的差异。（测序的错误） 由邻近基因座编码的的转录本是可相互重叠的，那么可能导致转录本错误的融合。（由基因组结构导致的，算法需要消除这种错误。） 为了满">
+  <meta name="description" content="1. 什么是Reads?高通量测序平台产生的序列就称为read。 2. 什么是Contig？拼接软件基于reads之间的overlap区，拼接获得的序列称为Contig（重叠群）。 3. 什么是Scaffold？基因组de novo测序，通过reads拼接获得Contigs后，往往还需要构建454 Paired-end库或Illumina Mate-pair库，以获得一定大小片段（如3Kb、6Kb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WenHan Wu">
-<meta property="og:url" content="/articles/trinity.html">
+<meta property="og:title" content="转录组测序">
+<meta property="og:url" content="/articles/RNA seq.html">
 <meta property="og:site_name" content="WenHan Wu">
-<meta property="og:description" content="trinity RNA-seq目的：不利用参考基因组，重建全长转录组。这项工作面临的挑战： 转录本表达量的差异性：即不同转录本之间的表达有高有低。 测序的偏倚：读段可能并未覆盖某些转录本的全长。 如何平衡不同转录本之间因为表达量的差异而引入的测序误差的差异。（测序的错误） 由邻近基因座编码的的转录本是可相互重叠的，那么可能导致转录本错误的融合。（由基因组结构导致的，算法需要消除这种错误。） 为了满">
+<meta property="og:description" content="1. 什么是Reads?高通量测序平台产生的序列就称为read。 2. 什么是Contig？拼接软件基于reads之间的overlap区，拼接获得的序列称为Contig（重叠群）。 3. 什么是Scaffold？基因组de novo测序，通过reads拼接获得Contigs后，往往还需要构建454 Paired-end库或Illumina Mate-pair库，以获得一定大小片段（如3Kb、6Kb">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-15T14:27:04.139Z">
+<meta property="og:updated_time" content="2020-01-13T18:30:23.657Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WenHan Wu">
-<meta name="twitter:description" content="trinity RNA-seq目的：不利用参考基因组，重建全长转录组。这项工作面临的挑战： 转录本表达量的差异性：即不同转录本之间的表达有高有低。 测序的偏倚：读段可能并未覆盖某些转录本的全长。 如何平衡不同转录本之间因为表达量的差异而引入的测序误差的差异。（测序的错误） 由邻近基因座编码的的转录本是可相互重叠的，那么可能导致转录本错误的融合。（由基因组结构导致的，算法需要消除这种错误。） 为了满">
+<meta name="twitter:title" content="转录组测序">
+<meta name="twitter:description" content="1. 什么是Reads?高通量测序平台产生的序列就称为read。 2. 什么是Contig？拼接软件基于reads之间的overlap区，拼接获得的序列称为Contig（重叠群）。 3. 什么是Scaffold？基因组de novo测序，通过reads拼接获得Contigs后，往往还需要构建454 Paired-end库或Illumina Mate-pair库，以获得一定大小片段（如3Kb、6Kb">
 
 
 
 
 
 
-  <link rel="canonical" href="/articles/trinity.html">
+  <link rel="canonical" href="/articles/RNA seq.html">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title> | WenHan Wu</title>
+  <title>转录组测序 | WenHan Wu</title>
   
 
 
@@ -276,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/articles/trinity.html">
+    <link itemprop="mainEntityOfPage" href="/articles/RNA seq.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wenhan wu">
@@ -293,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">转录组测序</h1>
         
 
         <div class="post-meta">
@@ -305,7 +305,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-15T21:56:18+08:00">2019-10-15</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-15T15:42:09+08:00">2019-09-15</time>
             
 
             
@@ -343,7 +343,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article:</span>
                 
-                <span title="Symbols count in article">860</span>
+                <span title="Symbols count in article">2.4k</span>
               
 
               
@@ -357,7 +357,7 @@
                 
                   <span class="post-meta-item-text">Reading time&asymp;</span>
                 
-                <span title="Reading time">2 mins.</span>
+                <span title="Reading time">6 mins.</span>
               
             </div>
           
@@ -377,19 +377,24 @@
       
 
       
-        <h1 id="trinity-RNA-seq"><a href="#trinity-RNA-seq" class="headerlink" title="trinity RNA-seq"></a>trinity RNA-seq</h1><h2 id="目的：不利用参考基因组，重建全长转录组。"><a href="#目的：不利用参考基因组，重建全长转录组。" class="headerlink" title="目的：不利用参考基因组，重建全长转录组。"></a>目的：不利用参考基因组，重建全长转录组。</h2><h3 id="这项工作面临的挑战："><a href="#这项工作面临的挑战：" class="headerlink" title="这项工作面临的挑战："></a>这项工作面临的挑战：</h3><ol>
-<li>转录本表达量的差异性：即不同转录本之间的表达有高有低。</li>
-<li>测序的偏倚：读段可能并未覆盖某些转录本的全长。</li>
-<li>如何平衡不同转录本之间因为表达量的差异而引入的测序误差的差异。（测序的错误）</li>
-<li>由邻近基因座编码的的转录本是可相互重叠的，那么可能导致转录本错误的融合。（由基因组结构导致的，算法需要消除这种错误。）</li>
-<li>为了满足可变剪切，必须要调整数据结构。（算法调整数据结构满足可变剪切）</li>
-<li>不同的基因的重复序列会产生歧义。</li>
-</ol>
-<h2 id="关于转录组重建的策略："><a href="#关于转录组重建的策略：" class="headerlink" title="关于转录组重建的策略："></a>关于转录组重建的策略：</h2><p>1.通过Mapping first方法，比如Scriputure，cufflinks等。</p>
-<pre><code>首先是将所有的读段回贴到参考基因组上
-然后利用重叠区域,融合形成序列
-利用读段生成剪切位点</code></pre><p>2.</p>
-
+        <h2 id="1-什么是Reads"><a href="#1-什么是Reads" class="headerlink" title="1. 什么是Reads?"></a>1. 什么是Reads?</h2><p>高通量测序平台产生的序列就称为read。</p>
+<h2 id="2-什么是Contig？"><a href="#2-什么是Contig？" class="headerlink" title="2. 什么是Contig？"></a>2. 什么是Contig？</h2><p>拼接软件基于reads之间的overlap区，拼接获得的序列称为Contig（重叠群）。</p>
+<h2 id="3-什么是Scaffold？"><a href="#3-什么是Scaffold？" class="headerlink" title="3. 什么是Scaffold？"></a>3. 什么是Scaffold？</h2><p>基因组de novo测序，通过reads拼接获得Contigs后，往往还需要构建454 Paired-end库或Illumina Mate-pair库，以获得一定大小片段（如3Kb、6Kb、10Kb、20Kb）两端的序列。基于这些序列，可以确定一些Contig之间的顺序关系，这些先后顺序已知的Contigs组成Scaffold。</p>
+<h2 id="4-Contig-N50："><a href="#4-Contig-N50：" class="headerlink" title="4. Contig N50："></a>4. Contig N50：</h2><p>Reads拼接后会获得一些不同长度的Contigs.将所有的Contig长度相加,能获得一个Contig总长度.然后将所有的Contigs按照从长到短进行排序,如获得Contig 1,Contig 2,contig 3…………Contig 25.将Contig按照这个顺序依次相加,当相加的长度达到Contig总长度的一半时,最后一个加上的Contig长度即为Contig N50.举例：Contig 1+Contig 2+ Contig 3 +Contig 4=Contig总长度*1/2时,Contig 4的长度即为Contig N50.ContigN50可以作为基因组拼接的结果好坏的一个判断标准.</p>
+<h2 id="5-Scaffold-N50："><a href="#5-Scaffold-N50：" class="headerlink" title="5.Scaffold N50："></a>5.Scaffold N50：</h2><p>Scaffold N50与Contig N50的定义类似.Contigs拼接组装获得一些不同长度的Scaffolds.将所有的Scaffold长度相加,能获得一个Scaffold总长度.然后将所有的Scaffolds<br>按照从长到短进行排序,如获得Scaffold 1,Scaffold 2,Scaffold 3…………Scaffold 25.将Scaffold按照这个顺序依次相加,当相加的长度达到Scaffold总长度的一半时,最后一个加上的Scaffold长度即为Scaffold N50.</p>
+<h2 id="trinity"><a href="#trinity" class="headerlink" title="trinity"></a>trinity</h2><p>基于RNA-seq组装的工具，</p>
+<h3 id="inchworm："><a href="#inchworm：" class="headerlink" title="inchworm："></a>inchworm：</h3><p>将RNA-seq数据组装成单个转录本，通常是主要转录亚型的全长转录本.</p>
+<h3 id="Chrysalis："><a href="#Chrysalis：" class="headerlink" title="Chrysalis："></a>Chrysalis：</h3><p>这一步将上一步得到contig进行聚类，对于每个聚类构建完整的德布罗意图(de Bruijin graph)。每个转录本表示的是给定基因或者一组有着共同序列的基因的全部转录组成。 之后会根据图中不相交的点对全部短读数据进行拆分.</p>
+<h3 id="Butterfly"><a href="#Butterfly" class="headerlink" title="Butterfly:"></a>Butterfly:</h3><p>并行处理各个图(graph), 追踪每个图中的短读和配对短读的路径，最后报告可变剪切亚型的全长转录本，并且区分出旁系同源基因的转录本.</p>
+<pre><code>conda create -n Trinity trinity -y
+source activate Trinity
+Trinity --seqType fq --max_memory 50G  \
+     --left condA_1.fq.gz,condB_1.fq.gz,condC_1.fq.gz \
+     --right condA_2.fq.gz,condB_2.fq.gz,condC_2.fq.gz \
+     --CPU 6  
+# 有基因组引导组装
+Trinity --genome_guided_bam rnaseq_alignments.csorted.bam --max_memory 50G \
+            --genome_guided_max_intron 10000 --CPU 6</code></pre>
       
     </div>
 
@@ -416,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/articles/R common function.html" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/articles/data clean.html" rel="next" title="数据的预处理">
+                <i class="fa fa-chevron-left"></i> 数据的预处理
               </a>
             
           </div>
@@ -426,7 +431,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/articles/de_bruijn graph.html" rel="prev" title>
+              <a href="/articles/R common function.html" rel="prev" title>
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -542,7 +547,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#trinity-RNA-seq"><span class="nav-number">1.</span> <span class="nav-text">trinity RNA-seq</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目的：不利用参考基因组，重建全长转录组。"><span class="nav-number">1.1.</span> <span class="nav-text">目的：不利用参考基因组，重建全长转录组。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#这项工作面临的挑战："><span class="nav-number">1.1.1.</span> <span class="nav-text">这项工作面临的挑战：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于转录组重建的策略："><span class="nav-number">1.2.</span> <span class="nav-text">关于转录组重建的策略：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是Reads"><span class="nav-number">1.</span> <span class="nav-text">1. 什么是Reads?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-什么是Contig？"><span class="nav-number">2.</span> <span class="nav-text">2. 什么是Contig？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-什么是Scaffold？"><span class="nav-number">3.</span> <span class="nav-text">3. 什么是Scaffold？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Contig-N50："><span class="nav-number">4.</span> <span class="nav-text">4. Contig N50：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Scaffold-N50："><span class="nav-number">5.</span> <span class="nav-text">5.Scaffold N50：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trinity"><span class="nav-number">6.</span> <span class="nav-text">trinity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inchworm："><span class="nav-number">6.1.</span> <span class="nav-text">inchworm：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chrysalis："><span class="nav-number">6.2.</span> <span class="nav-text">Chrysalis：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Butterfly"><span class="nav-number">6.3.</span> <span class="nav-text">Butterfly:</span></a></li></ol></li></ol></div>
             
 
           </div>
