@@ -273,6 +273,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wuwenhan.tech/articles/distance in ml.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wenhan wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WenHan Wu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/articles/distance in ml.html" itemprop="url">distance in machine learning</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-14T20:52:31+08:00">2020-01-14</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article:</span>
+                
+                <span title="Symbols count in article">2.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time&asymp;</span>
+                
+                <span title="Reading time">5 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="距离"><a href="#距离" class="headerlink" title="距离"></a>距离</h2><p>距离的测量通常需要<strong>给定的条件</strong>和<strong>实际情况</strong>.</p>
+<h3 id="几种常见距离的计算方法"><a href="#几种常见距离的计算方法" class="headerlink" title="几种常见距离的计算方法"></a>几种常见距离的计算方法</h3><h4 id="1-一维空间的距离-常见的时间轴是典型的一维距离"><a href="#1-一维空间的距离-常见的时间轴是典型的一维距离" class="headerlink" title="1. 一维空间的距离: 常见的时间轴是典型的一维距离."></a>1. 一维空间的距离: 常见的时间轴是典型的一维距离.</h4><h4 id="2-欧几里得距离-Euclidean-Distance"><a href="#2-欧几里得距离-Euclidean-Distance" class="headerlink" title="2. 欧几里得距离(Euclidean Distance):"></a>2. 欧几里得距离(Euclidean Distance):</h4><p>1a. 二维空间的欧几里得距离: 通常为点到点的距离 和 点到直线的距离<br>1.1 点到点的距离: S<sub>AB</sub> = [(x<sub>A</sub>-x<sub>B</sub>)<sup>2</sup> + (y<sub>A</sub>-y<sub>B</sub>)<sup>2</sup>]<sup>1/2</sup><br>1.2 点到直线的距离: S<sub>AC</sub> = |ax<sub>A</sub> + by<sub>A</sub> + c|/(a<sup>2</sup> + b<sup>2</sup>)<sup>1/2</sup><br>本公式可以通过向量的叉积进行证明, 即平行四边形面积除以底等于高即为距离.<br>那么推广到多维空间<br>S<sub>PQ</sub> = [()<sup>2</sup> + ()<sup>2</sup> + ()<sup>2</sup> + …]<sup>1/2</sup><br>那么用向量和矩阵的表示将更加简单,<br><strong>S<sub>PQ</sub> = [(x<sup>p</sup> - x<sup>q</sup>)<sup>T</sup>(x<sup>p</sup> - x<sup>q</sup>)]<sup>1/2</sup></strong><br>距离本质上就是一个数,在n维空间中,在有坐标的情况下,得到的就是新向量的长度.<br>那么在n维空间中也存在平面,它被称为超平面<br>g(x) = <strong>α</strong><sup>T</sup><strong>x</strong> + b<br><strong>那么点到超平面的距离公式为</strong><br>y = |<strong>α</strong><sup>T</sup><strong>x</strong> + b| / ||<strong>α</strong>||</p>
+<h4 id="3-曼哈顿距离"><a href="#3-曼哈顿距离" class="headerlink" title="3. 曼哈顿距离"></a>3. 曼哈顿距离</h4><p>通常意义上来说类似于导航距离<br>S<sub>AB</sub> = |x<sub>A</sub>-x<sub>B</sub>| + |y<sub>A</sub>-y<sub>B</sub>|<br>那么我们可以发现在二维空间中欧几里得距离下到原点为1的点将构成一个圆,而曼哈顿距离为1的点构成了一个边长为根号2的正方形.</p>
+<h4 id="4-切比雪夫距离"><a href="#4-切比雪夫距离" class="headerlink" title="4. 切比雪夫距离"></a>4. 切比雪夫距离</h4><p>在二维空间中A,B两点间的切比雪夫距离是两点横坐标差的绝对值与纵坐标的绝对值中较大的哪个.<br>S<sub>AB</sub> = max(|x1 - x2|, |y1 - y2|)<br>S<sub>PQ</sub> = max(|<em>x</em><sub>i</sub><sup>P</sup> - <em>x</em><sub>i</sub><sup>Q</sup>|)<br>那么在二维空间中将形成一个边长为2的正方形.</p>
+<h3 id="夹角余弦"><a href="#夹角余弦" class="headerlink" title="夹角余弦"></a>夹角余弦</h3><p>夹角余弦是另外一种测量距离的方法,严格地讲,它测量的并不是传统意义上的距离,而是两个样本间的相似性,样本间的夹角越小,相似度则越高.<br><strong>cosα</strong> = <strong>A B/|A||B|</strong></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wuwenhan.tech/articles/de_bruijn graph.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1795,7 +1951,7 @@ python</code></pre><h1 id="3-表格"><a href="#3-表格" class="headerlink" titl
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1860,7 +2016,7 @@ python</code></pre><h1 id="3-表格"><a href="#3-表格" class="headerlink" titl
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">17 mins.</span>
+    <span title="Reading time total">18 mins.</span>
   
 </div>
 
