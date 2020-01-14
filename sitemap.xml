@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wuwenhan.tech/articles/trinity.html</loc>
+    
+    <lastmod>2020-01-14T05:21:10.851Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wuwenhan.tech/articles/R%20common%20function.html</loc>
+    
+    <lastmod>2020-01-14T05:20:43.482Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wuwenhan.tech/articles/de_bruijn%20graph.html</loc>
+    
+    <lastmod>2020-01-14T05:20:18.012Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wuwenhan.tech/articles/RNA_seq.html</loc>
     
     <lastmod>2020-01-13T18:31:28.763Z</lastmod>
@@ -16,13 +37,6 @@
   </url>
   
   <url>
-    <loc>http://www.wuwenhan.tech/articles/de_bruijn%20graph.html</loc>
-    
-    <lastmod>2020-01-13T18:29:56.674Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.wuwenhan.tech/articles/markdown%20rules.html</loc>
     
     <lastmod>2020-01-13T18:29:48.647Z</lastmod>
@@ -30,23 +44,9 @@
   </url>
   
   <url>
-    <loc>http://www.wuwenhan.tech/articles/R%20common%20function.html</loc>
-    
-    <lastmod>2020-01-13T18:29:19.839Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.wuwenhan.tech/articles/data%20import.html</loc>
     
     <lastmod>2020-01-13T18:29:01.545Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wuwenhan.tech/articles/trinity.html</loc>
-    
-    <lastmod>2019-10-15T14:27:04.139Z</lastmod>
     
   </url>
   
