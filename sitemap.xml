@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wuwenhan.tech/articles/advanced%20R%20(names%20and%20values).html</loc>
+    
+    <lastmod>2020-08-10T13:40:45.675Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wuwenhan.tech/articles/%E7%96%BE%E7%97%85%E7%9A%84%E9%A2%84%E9%98%B2.html</loc>
     
     <lastmod>2020-08-10T12:39:24.241Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://www.wuwenhan.tech/articles/%E4%B8%89%E7%A7%8D%E7%A0%94%E7%A9%B6%E8%AE%BE%E8%AE%A1.html</loc>
     
     <lastmod>2020-08-10T12:11:28.581Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wuwenhan.tech/articles/advanced%20R%20(names%20and%20values).html</loc>
-    
-    <lastmod>2020-07-18T07:11:32.451Z</lastmod>
     
   </url>
   
